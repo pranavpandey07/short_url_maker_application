@@ -8,8 +8,20 @@
             <h3>Shorten A Url</h3>
         </div>
         <div class="col-10 col-sm-10 col-md-6 mx-auto">
+            {% if messages %}
+            {% for msg in messages %} 
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{msg}}
+            
+            <button type="button" class="close" data-dismiss="alert" area-label="Close">
+                <span area-hidden-true>&times;</span>
 
-            <form action="" method="POST">
+            </button>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+            <form action="{% url 'generate' %}" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <input type="url" name="original" class="form-control" placeholder="Original Url">
@@ -42,7 +54,13 @@
        
         
         
-            
+         {% for u in urls %}
+
+         <a href="{{u.original_url}}">{{ u.original_url }}</a>
+         <a href="http://localhost:8000/{{u.short_query}}">http://localhost:8000/{{u.short_query}}</a>
+         <p> Visits:{{ u.visits }} </p>
+         <br></br>
+         {% endfor %}   
     
    
     </div>
