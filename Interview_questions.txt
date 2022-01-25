@@ -1,0 +1,30 @@
+1.What is rest api?
+Ans.An API is a set of definitions and protocols for building and integrating application software. It’s sometimes referred to as a contract between an information provider and an information user—establishing the content required from the consumer (the call) and the content required by the producer (the response). For example, the API design for a weather service could specify that the user supply a zip code and that the producer reply with a 2-part answer, the first being the high temperature, and the second being the low.
+
+2.What is django orm?
+Ans.Object-Relational Mapper (ORM), which enables you to interact with your database, like you would with SQL. In fact, Django's ORM is just a pythonical way to create SQL to query and manipulate your database and get results in a pythonic fashion.
+
+3.What are middlewares?
+Ans. A middleware is a kind of layer that HTTP requests pass trough, You pass the request object to the middleware, it eventually alter it, than send it to the next one, and when you've reached the last middleware, it send back the HTTP reponse to the previous middleware, until it reach the HTTP Client.
+
+4.What are django cookies?
+Ans.A cookie is a small piece of information which is stored in the client browser. It is used to store user's data in a file permanently (or for the specified time).
+Cookie has its expiry date and time and removes automatically when gets expire. Django provides built-in methods to set and fetch cookie.
+
+5.What is class method?
+Ans.Like a class attribute, a class method is shared by all instances of the class. The first argument of a class method is the class itself. By convention, its name is cls. Python automatically passes this argument to the class method. Also, you use the @classmethod decorator to decorate a class method.
+
+  class Person:
+    counter = 0
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Person.counter += 1
+
+    def greet(self):
+        return f"Hi, it's {self.name}."
+
+    @classmethod
+    def create_anonymous(cls):
+        return Person('Anonymous', 22)

@@ -61,15 +61,28 @@ def generate(request):
     else:
         return redirect(dashboard)
 
-def home(request,query):
-    if not query or query is None:
+def home(request,short_query):
+    if not short_query or short_query is None:
         return render(request,'home.html')
     else:
         try:
-            check=shorturl.objects.get(short_query=query)
+            check=shorturl.objects.get(short_query=short_query)
             check.visits=check.visits+1
             check.save()
             url_to_redirect=check.original_url
             return redirect (url_to_redirect)
         except shorturl.DoesNotExist:
             return render(request,'home.html',{'error':"error"})
+
+@login_required(login_url='/login/')
+def deleteurl(request):
+    if request.method == "POST":
+        short = request.POST['delete']
+        try:
+            check = shorturl.objects.filter(short_query=short)
+            check.delete()
+            return redirect(dashboard)
+        except shorturl.DoesNotExist:
+            return redirect(home)
+    else:
+        return redirect(home)

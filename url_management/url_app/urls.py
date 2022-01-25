@@ -9,7 +9,7 @@ urlpatterns = [
     path('login/home/',views.home,name="redirectedhome"),
     path('logout/',views.logout,name='logout'),
     path('logout/login/',views.login,name='redirectedlogin'),
-    path('<str:query>/',views.home,name='')
+    #path('<str:query>/',views.home,name='')
     
     
 

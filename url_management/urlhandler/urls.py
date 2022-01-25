@@ -4,7 +4,8 @@ from urlhandler import views
 urlpatterns = [
     path('',views.dashboard,name='dashboard'),
     path('generate/',views.generate,name='generate'),
-    path('<str:query>/',views.home,name='home')
+    path('<str:short_query>/',views.home,name='home'),
+    path('deleteurl/', views.deleteurl, name="deleteurl")
     
     
 

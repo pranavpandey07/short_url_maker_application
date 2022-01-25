@@ -1,0 +1,60 @@
+Q.1.#QUESTION number 1
+def unique_triplet(lista):
+    for i in range(0,len(nums)):
+        x=nums[i]
+        for j in range(0,len(nums)):
+            if i==j:
+                continue
+            else:
+                y=nums[j]
+                for k in range(0,len(nums)):
+                    if k==i or k==j:
+                        continue
+                    else:
+                        z=nums[k]
+                        if nums[i]+nums[j]+nums[k]==0 :
+                            lista=[]
+                            lista.append(nums[i])
+                            lista.append(nums[j])
+                            lista.append(nums[k])
+                            output.append(lista)
+
+    sum_=[]
+    for i in output:
+        new=[]
+        for j in i:
+            x=abs(j)
+            new.append(x)
+        y=sum(new)
+        sum_.append(y)
+    
+    final_sum=[]
+    final=[]
+
+    for i in output:
+        new=[]
+        for j in i:
+            x=abs(j)
+            new.append(x)
+        if sum(new)  in sum_ and sum(new) not in final_sum:
+            final.append(i)
+            for i in final:
+                new=[]
+                for j in i:
+                    x=abs(j)
+                    new.append(x)
+                y=sum(new)
+                final_sum.append(y)
+    return final
+              
+            
+
+Q.2.#Question number 2
+     
+    for i in range(0,len(nums)):
+    for j in range(i+1,len(nums)):
+        if nums[i]>nums[j]:
+            temp=nums[i]
+            nums[i]=nums[j]
+            nums[j]=temp
+    return nums[-k]
