@@ -13,11 +13,8 @@ def login(request):
                 try:
                     user=User.objects.get(email=request.POST['email'])
                     auth.login(request,user)
-                    if request.POST['next']!='':
-                        return redirect(request.POST.get('next'))
-                    else:
-                        return redirect('home/')
-                        return redirect('home/')
+                    return redirect('home/')
+                        
                 except User.DoesNotExist:
                     return render(request,'login.html',{'error':"User does not exists!"})
             else:
@@ -41,7 +38,7 @@ def signup(request):
                         email=request.POST['email'],
                         password=request.POST['password']
                     )
-                    messages.success(request,"Signup successful , slogin here!!")
+                    messages.success(request,"Signup successful , login here!!")
                     return redirect(login)
             else:
                 return render(request,'signup.html',{'error':"Empty Fields!!!"})

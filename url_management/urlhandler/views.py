@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -5,7 +6,6 @@ from .models import shorturl
 import random,string
 
 # Create your views here.
-@login_required(login_url='/login/')
 def dashboard(request):
     usr=request.user
     urls=shorturl.objects.filter(user=usr)
@@ -16,7 +16,7 @@ def randomgen():
     return ''.join(random.choice(string.ascii_lowercase)for _ in range(6))
 
 
-@login_required(login_url='/login/')
+
 def generate(request):
     if request.method=="POST":
         pass
@@ -74,7 +74,7 @@ def home(request,short_query):
         except shorturl.DoesNotExist:
             return render(request,'home.html',{'error':"error"})
 
-@login_required(login_url='/login/')
+
 def deleteurl(request):
     if request.method == "POST":
         short = request.POST['delete']

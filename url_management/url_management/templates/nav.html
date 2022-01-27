@@ -28,28 +28,28 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+    <p><b>Welcome!!, {{ user.get_username }}. Thanks for logging in :)</b></p>
+{% else %}
+    <p><b>Welcome!!, new user. Please log in</b></p>
+{% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'homepage' %}">Home</a>
+            <a class="nav-link" href="{% url 'homepage' %}"> <b>Home</b></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
+          
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="nav-link" href="{% url 'dashboard' %}"><b>Dashboard</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-link" href="{% url 'logout' %}"><b>Logout</b></a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-link" href="{% url 'login' %}"><b>Login</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+            <a class="nav-link" href="{% url 'signup' %}"><b>Signup</b></a>
           </li>
           {% endif %}
         </ul>
