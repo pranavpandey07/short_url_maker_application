@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import shorturl
 import random,string
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def dashboard(request):
@@ -75,14 +76,3 @@ def home(request,short_query):
             return render(request,'home.html',{'error':"error"})
 
 
-def deleteurl(request):
-    if request.method == "POST":
-        short = request.POST['delete']
-        try:
-            check = shorturl.objects.filter(short_query=short)
-            check.delete()
-            return redirect(dashboard)
-        except shorturl.DoesNotExist:
-            return redirect(home)
-    else:
-        return redirect(home)

@@ -50,16 +50,7 @@
                         <h3>Visits : {{ u.visits }} </h3>
                     </div>
                     
-                    <div class="col-4">
-                        <form action="{% url 'deleteurl' %}" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="delete" value="{{ u.short_query }}">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                           
-                                
-                            </a>
-                        </form>
-                    </div>
+                   
                 </div>
 
             </div>
