@@ -28,3 +28,4 @@ Ans.Like a class attribute, a class method is shared by all instances of the cla
     @classmethod
     def create_anonymous(cls):
         return Person('Anonymous', 22)
+6.
